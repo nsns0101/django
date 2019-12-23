@@ -6,4 +6,6 @@ from django.conf.urls import include   #include를 쓰기위해 import해야함
 
 urlpatterns = [
     path('', include('elections.urls')),
+    path('admin/', admin.site.urls),
+
 ]

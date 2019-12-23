@@ -15,3 +15,6 @@ python manage.py makemigrations
 
 #DB에 migrations파일 연결
 python manage.py migrate
+
+#유저 생성
+python manage.py createsuperuser
