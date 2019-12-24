@@ -31,3 +31,21 @@ def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 
     }
     return render(request, 'elections/area.html', context)
 
+#
+def polls(request, poll_id):
+    poll = Poll.objects.get(pk = poll_id)   #Poll객체를 구분하는 기본키인 poll_id를 담음
+    selection = request.POST['choice']      #choice는 html의 form의 name과 관련
+                                            #보낸 candidate_id를 받음
+
+    try:    #두번째 투표인 경우
+        #
+        choice = Choice.objects.get(poll_id = poll.id, candidate_id = selection)
+        choice.votes += 1   #투표 1증가
+        choice.save()       #votes +1된 값을 db에 저장
+
+    except: #try의 get문의 반환값이 없을 때(최초로 투표할 경우)
+        #최초로 투표하는 경우, DB에 저장된 Choice객체가 없기 때문에 Choice를 새로 생성   
+        choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
+        choice.save()
+
+    return HttpResponse("finish")
