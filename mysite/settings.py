@@ -80,6 +80,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+DATABASE_OPTIONS = {'charset' : 'utf8'} #utf8추가
+TIME_ZONE = 'Asia/Seoul'    #시간은 서울기준
+LANGUAGE_CODE = 'ko-kr'     #기본은 한국어
 
 
 # Password validation

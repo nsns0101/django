@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
-from .models import Candidate               #현재 파일경로의 models.py의 Candidate를 import
+from .models import Candidate, Poll, Choice               #현재 파일경로의 models.py의 Candidate를 import
+import datetime
 
 def index(request):
     candidates = Candidate.objects.all()    #Candidate모델의 모든 행을 변수에 저장
@@ -10,5 +11,23 @@ def index(request):
 
 #출마지역
 def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 area가 들어옴
-    return HttpResponse(area)
+    today = datetime.datetime.now()       #현재 시간
+
+    #get은 찾고자하는 값이 없을 때 error를 발생. 그래서 try~except문으로 감싸주어야함
+    try:
+        #start_date__lte = today           => start_date <= today
+        #end_date__gte = today             => end_date >= today
+        #get은 하나의 객체만 리턴함
+        poll = Poll.objects.get(area = area, start_date__lte = today, end_date__gte = today) # get에 인자로 조건을 전달해줍니다. 
+        candidates = Candidate.objects.filter(area = area) # Candidate의 area와 매개변수 area가 같은 객체만 불러오기
+    except:
+        poll = None
+        candidates = None
+
+    context = {
+        'candidates' : candidates,
+        'area' : area,
+        'poll' : poll
+    }
+    return render(request, 'elections/area.html', context)
 

@@ -17,6 +17,9 @@ class Poll(models.Model):
     end_date = models.DateTimeField()
     area = models.CharField(max_length = 15)
 
+    def __str__(self):
+        return self.area
+
 #
 class Choice(models.Model):
     poll = models.ForeignKey(Poll, on_delete = models.CASCADE)              #Poll 모델의 id를 이용
