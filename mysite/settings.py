@@ -76,14 +76,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',   #쓸 DB
+        'NAME': 'mysite',                       #DB명
+        'USER' : 'root',                        #SQL ID
+        'PASSWORD' : 'node',                    #SQL PASSWORD
+        'HOST' : 'localhost',                   #HOST
+        'PORT' : '',                            #PORT(생략시 localhost:8000)
+        'CHARSET' : 'utf8',                     
+        'COLLATION' : 'utf8_general_ci',
     }
 }
-DATABASE_OPTIONS = {'charset' : 'utf8'} #utf8추가
-TIME_ZONE = 'Asia/Seoul'    #시간은 서울기준
-LANGUAGE_CODE = 'ko-kr'     #기본은 한국어
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -107,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'     #언어설정
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'    #시간 설정
 
 USE_I18N = True
 

@@ -29,4 +29,32 @@ python manage.py shell      #php의tinker역할
    => no1 = Candidate.objects.filter(party_number = 1) #party_number이 1인 행을 no1에 저장 (filter은 mysql의 where문)
    => no1   #위에서 가져온 데이터가 출력됨 __str__로 인해서 name만 뜰 것임
    => no1[0].party_number 또는 no1[0].introduction으로 검색 가능    #배열로 붙이는 것은 29번째줄에서 여러행을 받았을 수도 있으니 default는 배열
-   
+
+
+#DB를 MySql로 셋팅하기(settings.py 참고)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',   #쓸 DB
+        'NAME': 'mysite',                       #DB명
+        'USER' : 'root',                        #SQL ID
+        'PASSWORD' : 'node',                    #SQL PASSWORD
+        'HOST' : 'localhost',                   #HOST
+        'PORT' : '',                            #PORT(생략시 localhost:8000)
+        'CHARSET' : 'utf8',                     #utf8설정
+        'COLLATION' : 'utf8_general_ci',
+    }
+}
+
+#MySql UTF-8 설정방법(MySql에서 실행)
+set character_set_client =utf8;
+
+set character_set_connection = utf8;
+
+set character_set_database = utf8;
+
+set character_set_filesystem = utf8;
+
+set character_set_results = utf8;
+
+set character_set_server = utf8;
+

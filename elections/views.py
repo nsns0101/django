@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect  #Response와 Redirect할 수 있게 선언
 from .models import Candidate, Poll, Choice               #현재 파일경로의 models.py의 Candidate를 import
-import datetime
+import datetime                                           #날짜 함수를 쓰기 위해 선언해야함
+from django.db.models import Sum                          #Sum 함수를 쓰기 위해 선언해야함
 
 def index(request):
     candidates = Candidate.objects.all()    #Candidate모델의 모든 행을 변수에 저장
@@ -52,15 +53,17 @@ def polls(request, poll_id):
 def results(request, area):
     candidates = Candidate.objects.filter(area = area)
 
-    polls = Poll.objects.filter(area = area)
+    polls = Poll.objects.filter(area = area)    
 
     poll_results = []
     for poll in polls:
-        result = {}
-        result['start_date'] = poll.start_date
-        result['end_date'] = poll.end_date
+        result = {}                             #result 초기화
+        result['start_date'] = poll.start_date  #연관배열에 시작날짜 입력
+        result['end_date'] = poll.end_date      #연관배열에 종료날짜 입력
+        #투표한 것을 Choice 모델에 저장하였고(45~48줄) 그 안에서 poll_id와 같은 것들을 가져옴
+        total_votes = Choice.objects.filter(poll_id = poll.id).aggregate(Sum('votes'))
 
-        poll_results.append(result)
+        poll_results.append(result)             #poll_results배열에 추가
 
         context = {
         'candidates' : candidates, 
