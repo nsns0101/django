@@ -60,8 +60,22 @@ def results(request, area):
         result = {}                             #result 초기화
         result['start_date'] = poll.start_date  #연관배열에 시작날짜 입력
         result['end_date'] = poll.end_date      #연관배열에 종료날짜 입력
-        #투표한 것을 Choice 모델에 저장하였고(45~48줄) 그 안에서 poll_id와 같은 것들을 가져옴
+        #투표한 것을 Choice 모델에 저장하였고(45~48줄) 그 안에서 poll_id와 같은 것들을 가져와서
+        #다 더해야함 그래서 aggregate메서드를 사용(sun, avg 등등 있음)
         total_votes = Choice.objects.filter(poll_id = poll.id).aggregate(Sum('votes'))
+        #total_votes = 총 투표 횟수
+
+        result['total_votes'] = total_votes['votes__sum']
+
+        rates = []  # 개인 득표율
+        for candidate in candidates:
+            try:    #한번도 득표하지 못할 인원이 있으면 에러가 뜨기 때문에 try문 사용
+                choice = Choice.objects.get(poll_id = poll.id, candidate_id = candidate.id)
+                #choice.votes = 개인별 득표 횟수
+                rates.append(choice.votes * 100 / result['total_votes'])  #득표율 = 100x / 총득표수
+            except: #한번도 득표하지 못한 인원의 경우
+                rates.append(0)
+        result['rates'] = rates
 
         poll_results.append(result)             #poll_results배열에 추가
 

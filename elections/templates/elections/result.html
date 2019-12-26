@@ -30,9 +30,9 @@
                         ~ {{ result.end_date.year}} / {{ result.end_date.month}} / {{ result.end_date.day }}
                     </td>
                     <!-- result[start_date]를 html에선 .으로 구분-->
-                    <td> 후보1 지지율</td>
-                    <td> 후보2 지지율</td>
-                    <td> 후보3 지지율</td>
+                    {%for rate in result.rates %}
+                    <td> {{rate}}% </td>
+                    {% endfor %}
                 </tr>
                 {%endfor%}
             <tbody>

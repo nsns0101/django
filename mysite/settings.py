@@ -82,8 +82,8 @@ DATABASES = {
         'PASSWORD' : 'node',                    #SQL PASSWORD
         'HOST' : 'localhost',                   #HOST
         'PORT' : '',                            #PORT(생략시 localhost:8000)
-        'CHARSET' : 'utf8',                     
-        'COLLATION' : 'utf8_general_ci',
+        'CHARSET' : 'utf8mb4',                     
+        'COLLATION' : 'utf8mb4_unicode_ci',
     }
 }
 
