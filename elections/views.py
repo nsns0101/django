@@ -50,4 +50,21 @@ def polls(request, poll_id):
     return HttpResponseRedirect("/areas/{}/results".format(poll.area))   #밑의 results의 area에 poll.area에 들어감
 
 def results(request, area):
-    return render(request, 'elections/result.html')
+    candidates = Candidate.objects.filter(area = area)
+
+    polls = Poll.objects.filter(area = area)
+
+    poll_results = []
+    for poll in polls:
+        result = {}
+        result['start_date'] = poll.start_date
+        result['end_date'] = poll.end_date
+
+        poll_results.append(result)
+
+        context = {
+        'candidates' : candidates, 
+        'area' : area,
+        'poll_results' : poll_results
+        }
+    return render(request, 'elections/result.html', context)
