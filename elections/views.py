@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect  #Response와 Redirect할 수 있게 선언
 from .models import Candidate, Poll, Choice               #현재 파일경로의 models.py의 Candidate를 import
 import datetime
 
@@ -48,4 +47,7 @@ def polls(request, poll_id):
         choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
         choice.save()
 
-    return HttpResponse("finish")
+    return HttpResponseRedirect("/areas/{}/results".format(poll.area))   #밑의 results의 area에 poll.area에 들어감
+
+def results(request, area):
+    return render(request, 'elections/result.html')
