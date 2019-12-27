@@ -1,9 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render                         #view 등 render시키기 위해 선언
 from django.http import HttpResponse, HttpResponseRedirect  #Response와 Redirect할 수 있게 선언
-from .models import Candidate, Poll, Choice               #현재 파일경로의 models.py의 Candidate를 import
-import datetime                                           #날짜 함수를 쓰기 위해 선언해야함
-from django.db.models import Sum                          #Sum 함수를 쓰기 위해 선언해야함
+from .models import Candidate, Poll, Choice                 #현재 파일경로의 models.py의 Candidate를 import
+import datetime                                             #날짜 함수를 쓰기 위해 선언해야함
+from django.db.models import Sum                            #Sum 함수를 쓰기 위해 선언해야함
 
+#400error (bad_request)
+def error_400(request, exception):
+    # response = render_to_response('elections/error/error_400_page.html', {}, context_instance=RequestContext)
+    # response.status_code = 400
+    return render(request, "elections/error/error_400_page.html", status = 400)
+#404error (page not found)
+def error_404(request, exception):
+    # response = render_to_response('elections/error/error_404_page.html', {}, context_instance=RequestContext)
+    # response.status_code = 404
+    return render(request, "elections/error/error_404_page.html", status = 404)
+#500error (server error)
+def error_500(request):
+    return render(request, "elections/error/error_500_page.html", status = 500)
+
+#index
 def index(request):
     candidates = Candidate.objects.all()    #Candidate모델의 모든 행을 변수에 저장
     context = {'candidates' : candidates}   #context에 'condidates'라는 key로 변수 candidates를 저장
@@ -31,7 +46,7 @@ def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 
     }
     return render(request, 'elections/area.html', context)
 
-#
+#투표
 def polls(request, poll_id):
     poll = Poll.objects.get(pk = poll_id)   #Poll객체를 구분하는 기본키인 poll_id를 담음
     selection = request.POST['choice']      #choice는 html의 form의 name과 관련
@@ -50,6 +65,7 @@ def polls(request, poll_id):
 
     return HttpResponseRedirect("/areas/{}/results".format(poll.area))   #밑의 results의 area에 poll.area에 들어감
 
+#결과
 def results(request, area):
     candidates = Candidate.objects.filter(area = area)
 
@@ -85,3 +101,11 @@ def results(request, area):
         'poll_results' : poll_results
         }
     return render(request, 'elections/result.html', context)
+
+
+    # response = render_to_response('elections/error/error_500_page.html', {}, context_instance=RequestContext)
+    # response.status_code = 500
+    return render(request, "elections/error/error_500_page.html", status = 500)
+
+
+
