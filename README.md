@@ -6,7 +6,7 @@ django-admin startproject <파일명>
 
 #서버 실행
 python manage.py runserver
-
+python manage.py runserver --insecure       #DEBUG = False하고 static사용시 실행
 #app 만들기
 python manage.py startapp <앱이름>
 

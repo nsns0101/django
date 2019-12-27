@@ -56,7 +56,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],  #앱밖의 templates에 들어갈 수 있게 해줌
+        'DIRS': [BASE_DIR,'templates'],  #앱밖의 templates에 들어갈 수 있게 해줌
         'APP_DIRS': True,       #앱안의 templates를 들어갈 수 있게 해줌
         'OPTIONS': {
             'context_processors': [
@@ -124,4 +124,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' #웹페이지에서 사용할 정적파일의 최상위 url경로
