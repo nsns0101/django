@@ -4,6 +4,9 @@
 <html lang="en">
 
 <head>
+    <!-- title icon 삽입-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'elections/icon/favicon.ico' %}" />
+
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +16,14 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--href경로는 urls.py 참고 -->
+                <a class="navbar-brand" href="{%url 'elections:home' %}">사이트명</a>
+            </div>
+        </div>
+    </nav>
     {% block content %}{% endblock %}
 </body>
 
