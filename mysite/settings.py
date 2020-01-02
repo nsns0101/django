@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'elections'
+    'home'
 ]   #앱 추가
 
 MIDDLEWARE = [

@@ -1,0 +1,56 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- title icon 삽입-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'home/icon/favicon.ico' %}" />
+
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'home/css/bootstrap.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="top_nav" style="background-color: gray;">g</div>
+    <nav class="container navbar navbar-expand-sm bg-light">
+        <div class="navbar-header">
+            <ul class="navbar-nav">
+                <!-- 홈페이지 이름-->
+                <a class="navbar-brand" href="{%url 'home:home' %}">copang</a>
+                <li class="nav-item">
+                    <!--검색 폼 -->
+                    <form class="form-inline" action="#">
+                        <!-- 카테고리 검색 메뉴 -->
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                카테고리
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                        <!-- 입력 칸-->
+                        <input class="form-control" type="text" style="width:400px" placeholder="검색어를 입력하세요!">
+                        <!-- 검색 버튼-->
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                <li class="nav-item">
+                    <a href="#"><img src="{%static 'home/icon/내정보.png' %}" style="max-width: 100%;"></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="{%static 'home/icon/장바구니.png' %}" style="max-width: 100%;"></a>
+                </li>
+            </ul>
+        </div>
+    </nav> {% block content %}{% endblock %}
+</body>
+
+</html>

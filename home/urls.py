@@ -1,8 +1,8 @@
-#elections app의 Controller
+#home app의 Controller
 from django.urls import path
 from . import views             # .은 현재 폴더  (현재폴더의 views를 import)
 
-app_name = 'elections'  #layout.html참고
+app_name = 'home'  #layout.html참고
 
 urlpatterns = [
     path('', views.index, name = 'home'),    #views.py파일의 index메서드 실행   name는 layout.html 참고

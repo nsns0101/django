@@ -6,23 +6,23 @@ from django.db.models import Sum                            #Sum 함수를 쓰�
 
 #400error (bad_request)
 def error_400(request, exception):
-    # response = render_to_response('elections/error/error_400_page.html', {}, context_instance=RequestContext)
+    # response = render_to_response('home/error/error_400_page.html', {}, context_instance=RequestContext)
     # response.status_code = 400
-    return render(request, "elections/error/error_400_page.html", status = 400)
+    return render(request, "error/error_400_page.html", status = 400)
 #404error (page not found)
 def error_404(request, exception):
-    # response = render_to_response('elections/error/error_404_page.html', {}, context_instance=RequestContext)
+    # response = render_to_response('home/error/error_404_page.html', {}, context_instance=RequestContext)
     # response.status_code = 404
-    return render(request, "elections/error/error_404_page.html", status = 404)
+    return render(request, "error/error_404_page.html", status = 404)
 #500error (server error)
 def error_500(request):
-    return render(request, "elections/error/error_500_page.html", status = 500)
+    return render(request, "error/error_500_page.html", status = 500)
 
 #index
 def index(request):
     candidates = Candidate.objects.all()    #Candidate모델의 모든 행을 변수에 저장
     context = {'candidates' : candidates}   #context에 'condidates'라는 key로 변수 candidates를 저장
-    return render(request, 'elections/index.html', context)  #elections/index.html에 context 객체를 전달
+    return render(request, 'home/index.html', context)  #home/index.html에 context 객체를 전달
 
 #출마지역
 def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 area가 들어옴
@@ -44,7 +44,7 @@ def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 
         'area' : area,
         'poll' : poll
     }
-    return render(request, 'elections/area.html', context)
+    return render(request, 'home/area.html', context)
 
 #투표
 def polls(request, poll_id):
@@ -100,12 +100,7 @@ def results(request, area):
         'area' : area,
         'poll_results' : poll_results
         }
-    return render(request, 'elections/result.html', context)
-
-
-    # response = render_to_response('elections/error/error_500_page.html', {}, context_instance=RequestContext)
-    # response.status_code = 500
-    return render(request, "elections/error/error_500_page.html", status = 500)
+    return render(request, 'home/result.html', context)
 
 
 

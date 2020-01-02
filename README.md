@@ -57,3 +57,5 @@ set collation_connection     = utf8mb4_unicode_ci;
 set collation_database       = utf8mb4_unicode_ci; 
 set collation_server         = utf8mb4_unicode_ci;
 
+
+
