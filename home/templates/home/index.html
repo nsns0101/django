@@ -1,5 +1,6 @@
 <!-- 템플리 상속 받기 -->
 {% extends "layout/index.html" %}
+{% load staticfiles %}
 
 {%block title %}
 Copang
@@ -8,26 +9,61 @@ Copang
 
 {%block content %}
 <div class="container">
-    <hr />
-    <!-- <table class="table table-striped">
-        <thead>
-            <tr>
-                <td><B>이름</B></td>
-                <td><B>소개</B></td>
-                <td><B>출마지역</B></td>
-                <td><B>기호</B></td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for candidate in candidates %}
-            <tr>
-                <td> {{ candidate.name }} </td>
-                <td> {{ candidate.introduction }} </td>
-                <td> <a href="areas/{{candidate.area}}/">{{ candidate.area }} </a></td>
-                <td>기호 {{ candidate.party_number }}번</td>
-            </tr>
-            {% endfor %}
-        <tbody>
-    </table> -->
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <!-- 캐러셀 -------------------------------------------------------------------------------------------->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{% static 'home/img/쇼핑사진1.png' %}" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="{% static 'home/img/쇼핑사진2.png' %}" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="{% static 'home/img/쇼핑사진3.png' %}" style="width:100%;">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-------------------------------------------------------------------------------------------------------->
+
+        <!-- 캐러셀 밑 주요서비스 소개-->
+        <div>
+            <h3>copang 주요서비스</h3>
+            <p>최저가 상품은 copang에 다~ 있다! 바로 여기에서 쉽고 편리한 쇼핑하세요.</p>
+            <a href="#"><img src="{% static 'home/icon/주요서비스1.png' %}" style="width:14%; margin-right:50px"></a>
+            <a href="#"><img src="{% static 'home/icon/주요서비스2.png' %}" style="width:14%; margin-right:50px"></a>
+            <a href="#"><img src="{% static 'home/icon/주요서비스3.png' %}" style="width:14%; margin-right:50px"></a>
+            <a href="#"><img src="{% static 'home/icon/주요서비스4.png' %}" style="width:14%; margin-right:50px"></a>
+            <a href="#"><img src="{% static 'home/icon/주요서비스5.png' %}" style="width:14%; margin-right:50px"></a>
+        </div>
+    </body>
+
+    </html>
+
 </div>
 {% endblock %}

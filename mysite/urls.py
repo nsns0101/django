@@ -13,9 +13,8 @@ handler500 = 'home.views.error_500'
 
 
 urlpatterns = [
-    path('', include('home.urls')),
-    path('admin/', admin.site.urls),
-
+    path('admin/', admin.site.urls),        #admin
+    path('', include('home.urls')),         #쇼핑몰 홈페이지
 ]
 
 

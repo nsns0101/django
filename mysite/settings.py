@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0wi&293j(ae)w8h!k456q0#ip23m5^c3vio23_cicav55$-s$a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False    #True로 주면 웹 서버의 정보가 브라우저에 노출되므로 배포시에는 반드시 False를 줄 것
+DEBUG = True    #True로 주면 웹 서버의 정보가 브라우저에 노출되므로 배포시에는 반드시 False를 줄 것
                  #DEBUG를 못하도록 설정.
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']   #허용되는 주소
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'accounts'
 ]   #앱 추가
 
 MIDDLEWARE = [
