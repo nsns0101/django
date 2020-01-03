@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!-- copang navitionbar-->
+<nav class="container navbar navbar-expand-sm bg-light nav_middle">
+    <div class="navbar-header">
+        <ul class="navbar-nav">
+            <!-- 홈페이지 이름-->
+            <li class="nav-item">
+                <a class="navbar-brand" href="{%url 'home:home' %}" style="margin-right:25px;">
+                    <img src="{%static 'home/icon/copang.png' %}" style="max-width: 100%;">
+                </a>
+            </li>
+            <li class="nav-item">
+                <br />
+                <!--검색 폼 -->
+                <form class="form-inline" action="#" style="margin-right:50px; margin-top:5px">
+                    <!-- 카테고리 검색 메뉴 -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            카테고리
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <!-- 입력 칸-->
+                    <input class="form-control" type="text" style="width:300px" placeholder="검색어를 입력하세요!">
+                    <!-- 검색 버튼-->
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            <li class="nav-item">
+                <a href="#"><img src="{%static 'home/icon/내정보.png' %}" style="max-width: 100%;"></a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><img src="{%static 'home/icon/장바구니.png' %}" style="max-width: 100%;"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!------------------------------------------------------------------------------------------------------------->

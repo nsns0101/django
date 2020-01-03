@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{%include 'layout/bootstrap.html'%}
+
+
+<body>
+    {%include 'layout/navigation1.html'%}
+    {%include 'layout/navigation2.html'%}
+    {%include 'layout/navigation3.html'%}
+    {% block content %}{% endblock %}
+</body>
+
+</html>

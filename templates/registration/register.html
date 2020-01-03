@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+{% include "layout/navigation1.html" %}
+
+
+{%block content %}
+<div style="text-align:center">
+    <a href='/'><img src="{%static 'home/icon/copang_big.png' %}" style="max-width: 100%"></a>
+
+</div>
+
+
+<div class="container">
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+            <form role="form">
+                <fieldset>
+                    <h2>회원가입</h2>
+                    <hr class="colorgraph">
+                    <h5>로그인 정보</h5> <!-- 아이디, 비밀번호-->
+                    <div class="form-group">
+                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-lg"
+                            placeholder="생성할 비밀번호">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password_check" id="password_check" class="form-control input-lg"
+                            placeholder="비밀번호 확인">
+                    </div>
+                    <h5>개인정보</h5> <!-- 이름, 주소, 메일주소, 연락처-->
+                    <div class="form-group">
+                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                    </div>
+                    <div class="form-group">
+                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                    </div>
+                    <div class="form-group">
+                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                    </div>
+                    <div class="form-group">
+                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                    </div>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <a href="" class="btn btn-lg btn-primary btn-block">회원가입 완료</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

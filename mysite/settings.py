@@ -126,3 +126,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/' #웹페이지에서 사용할 정적파일의 최상위 url경로
+
+LOGIN_REDIRECT_URL = '/'
