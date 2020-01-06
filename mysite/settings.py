@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
-    'accounts'
+    'home',         #홈페이지
+    'accounts',     #로그인, 회원가입
 ]   #앱 추가
 
 MIDDLEWARE = [
