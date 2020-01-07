@@ -22,27 +22,33 @@
                     <hr class="colorgraph">
                     <h5>로그인 정보</h5> <!-- 아이디, 비밀번호-->
                     <div class="form-group">
-                        <input name="id" id="id" class="form-control input-lg" placeholder="생성할 ID">
+                        <label for="user_id"></label>
+                        <input name="user_id" id="user_id" class="form-control input-lg" placeholder="생성할 ID">
                     </div>
                     <div class="form-group">
+                        <label for="password"></label>
                         <input type="password" name="password" id="password" class="form-control input-lg"
                             placeholder="생성할 비밀번호">
                     </div>
                     <div class="form-group">
+                        <label for="password_check"></label>
                         <input type="password" name="password_check" id="password_check" class="form-control input-lg"
                             placeholder="비밀번호 확인">
                     </div>
                     <h5>개인정보</h5> <!-- 이름, 이메일, 주소, 연락처-->
                     <!-- 이름 -->
                     <div class="form-group">
-                        <input name="id" id="id" class="form-control input-lg" placeholder="이름">
+                        <label for="name"></label>
+                        <input name="name" id="name" class="form-control input-lg" placeholder="이름">
                     </div>
                     <!-- 이메일-->
                     <div class="form-group">
-                        <input name="id" id="id" class="form-control input-lg" placeholder="이메일"
+                        <label for="email"></label>
+                        <input name="email" id="email" class="form-control input-lg" placeholder="이메일"
                             style="max-width:252px;display:inline;">
                         <span style="display:inline;">@</span>
-                        <input name=" id" id="id" class="form-control input-lg" placeholder=""
+                        <label for="email2"></label>
+                        <input name=" email2" id="email2" class="form-control input-lg" placeholder=""
                             style="max-width:252px;display:inline;">
                         <!-- 카테고리 검색 메뉴 -->
                         <div class="dropdown" style="display: inline;">
@@ -61,7 +67,6 @@
                                 <a class="dropdown-item" href="#">뷰티</a>
                                 <a class="dropdown-item" href="#">유아</a>
                                 <a class="dropdown-item" href="#">기타</a>
-
                             </div>
                         </div>
                     </div>

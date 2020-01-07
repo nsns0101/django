@@ -128,3 +128,10 @@ USE_TZ = True
 STATIC_URL = '/static/' #웹페이지에서 사용할 정적파일의 최상위 url경로
 
 LOGIN_REDIRECT_URL = '/'
+
+
+AUTH_USER_MODEL = 'accounts.models'     #User모델을 커스터마이징할 경우 써야함
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
