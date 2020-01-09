@@ -86,6 +86,11 @@ DATABASES = {
         'PORT' : '',                            #PORT(생략시 localhost:8000)
         'CHARSET' : 'utf8mb4',                     
         'COLLATION' : 'utf8mb4_unicode_ci',
+        'OPTIONS' : {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            # 'sql_mode' : 'traditional',
+        
+        },
     }
 }
 
@@ -130,8 +135,8 @@ STATIC_URL = '/static/' #웹페이지에서 사용할 정적파일의 최상위 
 LOGIN_REDIRECT_URL = '/'
 
 
-AUTH_USER_MODEL = 'accounts.models'     #User모델을 커스터마이징할 경우 써야함
+AUTH_USER_MODEL = 'accounts.User'     #User모델을 커스터마이징할 경우 써야함
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+# )

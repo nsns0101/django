@@ -7,7 +7,8 @@
 
 
 <body>
-    {%include 'layout/navigation1.html'%}
+
+    {%include 'layout/navigation1.html' with user_id=user_id%}
     {%include 'layout/navigation2.html'%}
     {%include 'layout/navigation3.html'%}
     {% block content %}{% endblock %}

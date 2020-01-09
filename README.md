@@ -58,4 +58,12 @@ set collation_database       = utf8mb4_unicode_ci;
 set collation_server         = utf8mb4_unicode_ci;
 
 
+#이런 error 뜰 경우
+1) mysql의 my.ini파일 변경
+    [mysqld]
+    default-character-set=utf8
+    default-collation=utf8_general_ci
+
+2) database, table character set 설정
+    ALTER TABLE table_name convert to charset utf8;
 

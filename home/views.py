@@ -1,9 +1,9 @@
 from django.shortcuts import render                         #view 등 render시키기 위해 선언
 from django.http import HttpResponse, HttpResponseRedirect  #Response와 Redirect할 수 있게 선언
-# from .models import Candidate, Poll, Choice                 #현재 파일경로의 models.py의 Candidate를 import
+# from .models import Candidate, Poll, Choice               #현재 파일경로의 models.py의 Candidate를 import
 import datetime                                             #날짜 함수를 쓰기 위해 선언해야함
 from django.db.models import Sum                            #Sum 함수를 쓰기 위해 선언해야함
-
+from accounts.models import User
 #400error (bad_request)
 def error_400(request, exception):
     # response = render_to_response('home/error/error_400_page.html', {}, context_instance=RequestContext)
@@ -20,7 +20,20 @@ def error_500(request):
 
 # #index
 def index(request):
-    return render(request, 'home/index.html')  #home/index.html에 context 객체를 전달
+    # user_pk = request.session.get('user')
+    # print(user_pk)
+    print(request.user)
+    # if user_pk:     #세션에 user_pk정보가 존재하면
+    #     try:
+    #         user = User.objects.get(pk=user_pk)
+    #         return render(request, 'home/index.html')  #home/index.html에 context 객체를 전달
+    #     except:
+    #         pass
+    #로그인 하지 않았을 경우
+    return render(request, 'home/index.html')
+
+
+
 
 # #출마지역
 # def areas(request, area):   #area는 areas.html에서 하이퍼링크로 누른 area가 들어옴

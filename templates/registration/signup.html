@@ -15,42 +15,68 @@
 
     <div class="row" style="margin-top:20px">
         <span class="col-xs-12 col-sm-12 col-md-12 col-sm-offset-2 col-md-offset-3">
-            <form role="form" action="/accounts/register/" method="post">
+            <form id="signup" role="form" action="/accounts/register/" method="post">
                 {% csrf_token %}
                 <fieldset>
                     <h2>회원가입</h2>
                     <hr class="colorgraph">
                     <h5>로그인 정보</h5> <!-- 아이디, 비밀번호-->
+
+                    <!-- 아이디-->
                     <div class="form-group">
-                        <label for="user_id"></label>
-                        <input name="user_id" id="user_id" class="form-control input-lg" placeholder="생성할 ID">
+                        <!-- <label for="user_id"></label>
+                        <input name="user_id" id="user_id" class="form-control input-lg" placeholder="생성할 ID"> -->
+                        {{ signup_form.user_id.label_tag}}
+                        {{ signup_form.user_id}}
+                        <span class="field-error">
+                            {{signupform.user_id.errors|striptags }}
+                        </span>
                     </div>
+
+                    <!-- 비밀번호 -->
                     <div class="form-group">
-                        <label for="password"></label>
+                        <!-- <label for="password"></label>
                         <input type="password" name="password" id="password" class="form-control input-lg"
-                            placeholder="생성할 비밀번호">
+                            placeholder="생성할 비밀번호"> -->
+                        {{ signup_form.password.label_tag}}
+                        {{ signup_form.password}}
+                        <span class="field-error">
+                            {{signupform.password.errors|striptags }}
+                        </span>
                     </div>
+
+                    <!-- 비밀번호 확인 -->
                     <div class="form-group">
-                        <label for="password_check"></label>
+                        <!-- <label for="password_check"></label>
                         <input type="password" name="password_check" id="password_check" class="form-control input-lg"
-                            placeholder="비밀번호 확인">
+                            placeholder="비밀번호 확인"> -->
+                        {{ signup_form.password_check.label_tag}}
+                        {{ signup_form.password_check}}
+                        <span class="field-error">
+                            {{signupform.password_check.errors|striptags }}
+                        </span>
                     </div>
                     <h5>개인정보</h5> <!-- 이름, 이메일, 주소, 연락처-->
+
                     <!-- 이름 -->
                     <div class="form-group">
-                        <label for="name"></label>
-                        <input name="name" id="name" class="form-control input-lg" placeholder="이름">
+                        <!-- <label for="name"></label>
+                        <input name="name" id="name" class="form-control input-lg" placeholder="이름"> -->
+                        {{ signup_form.username.label_tag}}
+                        {{ signup_form.username}}
+                        <span class="field-error">
+                            {{signupform.username.errors|striptags }}
+                        </span>
                     </div>
                     <!-- 이메일-->
                     <div class="form-group">
-                        <label for="email"></label>
+                        <!-- <label for="email"></label>
                         <input name="email" id="email" class="form-control input-lg" placeholder="이메일"
                             style="max-width:252px;display:inline;">
                         <span style="display:inline;">@</span>
                         <label for="email2"></label>
                         <input name=" email2" id="email2" class="form-control input-lg" placeholder=""
                             style="max-width:252px;display:inline;">
-                        <!-- 카테고리 검색 메뉴 -->
                         <div class="dropdown" style="display: inline;">
                             <button class=" btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,7 +94,12 @@
                                 <a class="dropdown-item" href="#">유아</a>
                                 <a class="dropdown-item" href="#">기타</a>
                             </div>
-                        </div>
+                        </div> -->
+                        {{ signup_form.email.label_tag}}
+                        {{ signup_form.email}}
+                        <span class="field-error">
+                            {{signupform.email.errors|striptags }}
+                        </span>
                     </div>
                     <!-- 
                     <div class="form-group" style="display: inline;">
