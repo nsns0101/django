@@ -137,6 +137,4 @@ LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'accounts.User'     #User모델을 커스터마이징할 경우 써야함
 
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = ( 'accounts.backends.OpencartBackend',)
