@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -23,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0wi&293j(ae)w8h!k456q0#ip23m5^c3vio23_cicav55$-s$a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True    #True로 주면 웹 서버의 정보가 브라우저에 노출되므로 배포시에는 반드시 False를 줄 것
-                 #DEBUG를 못하도록 설정.
+DEBUG = True  # True로 주면 웹 서버의 정보가 브라우저에 노출되므로 배포시에는 반드시 False를 줄 것
+# DEBUG를 못하도록 설정.
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']   #허용되는 주소
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # 허용되는 주소
 
 
 # Application definition
@@ -38,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',         #홈페이지
-    'accounts',     #로그인, 회원가입
-]   #앱 추가
+    # 'imagekit'  # 이미지 확장을 위한 것
+    'home',  # 홈페이지
+    'accounts',  # 로그인, 회원가입
+    'product',   # 상품
+]  # 앱 추가
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,12 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'templates'],  #앱밖의 templates에 들어갈 수 있게 해줌
-        'APP_DIRS': True,       #앱안의 templates를 들어갈 수 있게 해줌
+        'DIRS': [BASE_DIR, 'templates'],  # 앱밖의 templates에 들어갈 수 있게 해줌
+        'APP_DIRS': True,  # 앱안의 templates를 들어갈 수 있게 해줌
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -78,19 +78,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   #쓸 DB
-        'NAME': 'mysite',                       #DB명
-        'USER' : 'root',                        #SQL ID
-        'PASSWORD' : 'node',                    #SQL PASSWORD
-        'HOST' : 'localhost',                   #HOST
-        'PORT' : '',                            #PORT(생략시 localhost:8000)
-        'CHARSET' : 'utf8mb4',                     
-        'COLLATION' : 'utf8mb4_unicode_ci',
-        'OPTIONS' : {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            # 'sql_mode' : 'traditional',
-        
-        },
+        'ENGINE': 'django.db.backends.mysql',  # 쓸 DB
+        'NAME': 'mysite',  # DB명
+        'USER': 'root',  # SQL ID
+        'PASSWORD': 'node',  # SQL PASSWORD
+        'HOST': 'localhost',  # HOST
+        'PORT': '',  # PORT(생략시 localhost:8000)
+        'CHARSET': 'utf8mb4',
+        'COLLATION': 'utf8mb4_unicode_ci',
+        'OPTIONS': {
+            'sql_mode': 'TRADITIONAL',
+            'charset': 'utf8',
+            'init_command': 'SET '
+                'storage_engine=INNODB,'
+                'character_set_connection=utf8,'
+                'collation_connection=utf8_bin'
+        }
     }
 }
 
@@ -116,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'     #언어설정
+LANGUAGE_CODE = 'ko-kr'  # 언어설정
 
-TIME_ZONE = 'Asia/Seoul'    #시간 설정
+TIME_ZONE = 'Asia/Seoul'  # 시간 설정
 
 USE_I18N = True
 
@@ -130,11 +133,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/' #웹페이지에서 사용할 정적파일의 최상위 url경로
+# print(BASE_DIR)  # C:\Django\mysite
 
+# static 경로 설정-----------------------------------------------
+# {% static '경로'%}에서 static에 해당하는 url
+STATIC_URL = '/static/'  # 웹페이지에서 사용할 정적파일의 최상위 url경로
+# 프로젝트 전반적으로 사용되는 static 경로가 어딘지 설정합니다.
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'mysite', 'static')
+]
+# 여러 static파일을 모으는 것
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# -----------------------------------------------------------------
+
+# 로그인 관련 경로 설정
 LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'accounts.User'  # User모델을 커스터마이징할 경우 써야함
+AUTHENTICATION_BACKENDS = ('accounts.backends.OpencartBackend',)
 
-
-AUTH_USER_MODEL = 'accounts.User'     #User모델을 커스터마이징할 경우 써야함
-
-AUTHENTICATION_BACKENDS = ( 'accounts.backends.OpencartBackend',)
+# 이미지 파일 경로 설정
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

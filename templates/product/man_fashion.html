@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+{% include "layout/navigation1.html" %}
+{% include "layout/navigation2.html" %}
+{% include "layout/navigation3.html" %}
+
+
+<div class="container">
+    {%if user.user_id == 'nsns0101'%}
+    <h1>관리자 권한</h1>
+    <button class="btn_create__form btn btn-primary">상품 추가</button>
+    <div class="new_product" style="display: none;">
+        {% include "product/admin/create_product.html" %}
+    </div>
+
+    {%endif%}
+
+    <div class="product_man_fashion">
+        {%for man_fashion in man_fashions %}
+        <tr>
+            <!-- <td><img src=""></td> -->
+            <td>{{man_fashion.product_name}}</td>
+        </tr>
+        {%endfor%}
+    </div>
+
+</div>
+
+
+<script>
+    var count = 0;
+    //상품추가 버튼을 눌렀을 때 form 띄우기
+    $(".btn_create__form").click(function () {
+        count += 1;
+        var text = count % 2 == 0 ? "상품 추가" : " 돌아가기"
+
+        var create_product = $('.new_product');                  //새글쓰기 눌렀을 때 나오는 화면
+        // var el_container = $('.container__article');        //아티클 index화면
+        // el_container.toggle(500);
+        create_product.toggle(500);
+        $('.btn_create__form').html(text);              //버튼을 '새글쓰기' '돌아가기' 인지를 결정해줌
+    });
+
+    //form에서 상품 추가하였을 경우
+    // $(document).on('click', '.btn_create__product', function () {
+    //     var form = $('#btn_product_form')[0];    //제이쿼리 객체안에 있는 form객체 값을 가져오기 위하여 사용
+    //     var data = new FormData(form);
+    //     $.ajax({
+    //         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+    //         type: 'POST',
+    //         url: '/',
+    //         data: data,
+    //         processData: false,
+    //         contentType: false,
+    //     }).then(function () {
+    //         article[article_id] = 0;
+    //         $('.main_article').load('/articles .container__article');
+    //         var el_create = $('.new_article');
+    //         var el_container = $('.container__article');
+    //         el_container.toggle(150);
+    //         el_create.toggle(150);
+    //     });
+    // });
+</script>

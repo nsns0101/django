@@ -1,0 +1,68 @@
+<form id="btn_product_form" method="POST" , action="/product/all" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td style="padding-right:100px;">
+                <!-- 카테고리 -->
+                <div class="form-group">
+                    <label for="product_category">상품 카테고리</label>
+                    <input type=" text" name="product_category" id="product_category" class="form-control" />
+                </div>
+            </td>
+
+            <td style="padding-right:100px;">
+                <!-- 상품명 -->
+                <div class=" form-group">
+                    <label for="product_name">상품명</label>
+                    <input type="text" name="product_name" id="product_name" class="form-control" />
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding-right:100px;">
+                <!-- 수량 -->
+                <div class="form-group">
+                    <label for="product_quantity">상품 수량</label>
+                    <input type="number" name="product_quantity" id="product_quantity" class="form-control" />
+                </div>
+            </td>
+
+            <td style="padding-right:100px;">
+                <!-- 가격 -->
+                <div class="form-group">
+                    <label for=" product_price">상품 가격</label>
+                    <input type="number" name="product_price" id="product_price" class="form-control" />
+                </div>
+            </td>
+
+            <td style="padding-right:100px;">
+                <!-- 할인율 -->
+                <div class="form-group">
+                    <label for="product_sale">상품 할인율(%)</label>
+                    <input type="number" name="product_sale" id="product_sale" class="form-control" />
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding-right:100px;">
+                <!-- 제조 국가-->
+                <div class="form-group">
+                    <label for="product_area">제조 국가</label>
+                    <input type="text" name="product_area" id="product_area" class="form-control" />
+                </div>
+            </td>
+        </tr>
+    </table>
+    <!-- 이미지 -->
+    <div class="form-group">
+        <label for="files">상품 이미지</label>
+        <input type="file" name="product_image" id="product_image" class="form-control" multiple="multiple"
+            enctype="multipart/form-data" />
+    </div>
+
+    <div style="text-align: center;">
+        <button class="btn_create__product btn-success">추가하기</button>
+    </div>
+</form>
